@@ -1,0 +1,85 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-android-extensions'
+}
+
+android {
+    compileSdk 31
+
+    defaultConfig {
+        applicationId "comp_318.group.android_images"
+        minSdk 21
+        targetSdk 31
+        versionCode 1
+        versionName "1.0.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    aaptOptions {
+        noCompress "tflite"
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    lintOptions {
+        abortOnError false
+    }
+    flavorDimensions "tfliteInference"
+    productFlavors {
+        // The TFLite inference is built using the TFLite Java interpreter.
+        interpreter {
+            dimension "tfliteInference"
+        }
+        // Default: The TFLite inference is built using the TFLite Task library (high-level API).
+        taskApi {
+            getIsDefault().set(true)
+            dimension "tfliteInference"
+        }
+    }
+}
+// App assets folder:
+project.ext.ASSET_DIR = projectDir.toString() + '/src/main/assets'
+
+// Download TF Lite model.
+apply from: 'download.gradle'
+
+
+dependencies {
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    interpreterImplementation project(":lib_interpreter")
+    taskApiImplementation project(":lib_task_api")
+    implementation project(":lib_utils")
+
+    implementation 'androidx.core:core-ktx:1.3.2'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.3.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'androidx.coordinatorlayout:coordinatorlayout:1.1.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel:2.2.0'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'com.google.guava:guava:28.2-android'
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.3.71'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.0'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.0'
+
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+}

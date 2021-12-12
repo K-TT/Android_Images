@@ -1,0 +1,21 @@
+*.iml
+.gradle
+/local.properties
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+
+# Project exclude paths
+/lib_task_api/build/
+/lib_task_api/build/intermediates/javac/debug/classes/
+/lib_utils/build/
+/lib_utils/build/intermediates/javac/debug/classes/

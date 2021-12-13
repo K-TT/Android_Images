@@ -1,3 +1,11 @@
+/** Group 3: Software Devices 
+ * Image Segmentation
+ * Student name:
+ * Rjaofera Tiana Andriamasinalivao
+ * Burhan Jawed
+ * Kateryna Khomenko
+ * Oksana Koshulap
+ */
 /*
  * Copyright 2019 Google LLC
  *

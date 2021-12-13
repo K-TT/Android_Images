@@ -1,11 +1,3 @@
-/** Group 3: Software Devices 
- * Image Segmentation
- * Student name:
- * Rjaofera Tiana Andriamasinalivao
- * Burhan Jawed
- * Kateryna Khomenko
- * Oksana Koshulap
- */
 package comp_318.group.android_images
 
 import org.junit.Test

@@ -11,6 +11,7 @@
     <color name="tfe_color_primary_dark">#ff6f00</color>
     <color name="tfe_color_accent">#425066</color>
 
-    <color name="tfe_is_color_light_gray">#E4E4E4</color>
+    <!-- changed color here -->
+    <color name="tfe_is_color_light_gray">#d8bfd8</color>
 
 </resources>
